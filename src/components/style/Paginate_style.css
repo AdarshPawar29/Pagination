@@ -60,7 +60,40 @@
   margin: 10px;
 }
 
+.pageSelect .span__pageSelectText {
+  margin-left: 5px;
+}
+
 .pageSelect .input__pageSelect {
   width: 30px;
+  border-radius: 5px;
+  border: 1px solid black;
+}
+
+.pageSelect .input__pageSelect::-webkit-input-placeholder {
+  text-align: center;
+}
+
+.pageSelect .input__pageSelect:-ms-input-placeholder {
+  text-align: center;
+}
+
+.pageSelect .input__pageSelect::-ms-input-placeholder {
+  text-align: center;
+}
+
+.pageSelect .input__pageSelect::placeholder {
+  text-align: center;
+}
+
+.pageSelect .button__pageSelect--left {
+  margin-left: 5px;
+  width: 30px;
+  border-radius: 5px;
+}
+
+.pageSelect .button__pageSelect--right {
+  width: 30px;
+  border-radius: 5px;
 }
 /*# sourceMappingURL=Paginate_style.css.map */

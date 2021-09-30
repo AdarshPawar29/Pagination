@@ -59,7 +59,29 @@ $dropdownText: #717779;
   font-size: 12px;
   line-height: 30px;
   margin: 10px;
+
+  .span__pageSelectText {
+    margin-left: 5px;
+  }
+
   .input__pageSelect {
     width: 30px;
+    border-radius: 5px;
+    border: 1px solid black;
+
+    &::placeholder {
+      text-align: center;
+    }
+  }
+
+  .button__pageSelect--left {
+    margin-left: 5px;
+    width: 30px;
+    border-radius: 5px;
+  }
+
+  .button__pageSelect--right {
+    width: 30px;
+    border-radius: 5px;
   }
 }

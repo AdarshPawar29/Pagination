@@ -86,7 +86,19 @@ const Paginate = ({
             placeholder={currentPageNo}
             className="input__pageSelect"
           />
-          <span className="">of {totalPages}</span>
+          <span className="span__pageSelectText">of {totalPages}</span>
+          <button
+            className="button__pageSelect--left"
+            onClick={() => setCurrentPageNo(currentPageNo - 1)}
+          >
+            <i class="fas fa-chevron-left"></i>
+          </button>
+          <button
+            className="button__pageSelect--right"
+            onClick={() => setCurrentPageNo(currentPageNo + 1)}
+          >
+            <i class="fas fa-chevron-right"></i>
+          </button>
         </div>
       </div>
     </>
