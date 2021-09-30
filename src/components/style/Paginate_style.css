@@ -1,0 +1,66 @@
+* {
+  margin: 0px;
+  padding: 0px;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+}
+
+.paginationContainer {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  margin-top: 10px;
+}
+
+.dropdown__inline {
+  display: inline-block;
+}
+
+.view {
+  font-size: 12px;
+  line-height: 30px;
+  margin: 10px 5px;
+}
+
+.view .button__view--dropdown {
+  background-color: #d2d4d4;
+  width: auto;
+  border-radius: 5px;
+}
+
+.view .span__viewText--1 {
+  margin-right: 5px;
+}
+
+.view .span__viewText--2 {
+  margin-left: 5px;
+}
+
+.view .span__buttonText {
+  margin: 0px 15px;
+}
+
+.view .span__buttonText i {
+  margin-left: 5px;
+}
+
+.status {
+  font-size: 12px;
+  line-height: 30px;
+  text-align: center;
+  margin: 10px;
+}
+
+.pageSelect {
+  font-size: 12px;
+  line-height: 30px;
+  margin: 10px;
+}
+
+.pageSelect .input__pageSelect {
+  width: 30px;
+}
+/*# sourceMappingURL=Paginate_style.css.map */

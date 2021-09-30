@@ -1,0 +1,19 @@
+{
+  "employees": [
+    {
+      "id": 1,
+      "empName": "Shubham Sharma",
+      "role": "Junior Developer"
+    },
+    {
+      "id": 2,
+      "empName": "Shashank Gupta",
+      "role": "Associate Principal"
+    },
+    {
+      "id": 3,
+      "empName": "Adarsh Pawar",
+      "role": "Consultant"
+    }
+  ]
+}
