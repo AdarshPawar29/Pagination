@@ -33,7 +33,6 @@ const Posts = () => {
         ))}
       </ul>
       <Paginate
-        posts={posts}
         currentPageNo={currentPageNo}
         setCurrentPageNo={setCurrentPageNo}
         postsPerPage={postsPerPage}

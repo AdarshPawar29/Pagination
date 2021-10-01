@@ -23,10 +23,13 @@ const Paginate = ({
       } else if (e.target.value < 1) {
         setCurrentPageNo(1);
       } else {
-        setCurrentPageNo(e.target.value);
+        setCurrentPageNo(e.target.valueAsNumber);
+
+        //BUG FIXED HERE
+        // e.target.value ---> e.target.valueAsNumber (String to Number)
       }
-      e.target.value = "";
     }
+    e.target.value = "";
   };
 
   return (
