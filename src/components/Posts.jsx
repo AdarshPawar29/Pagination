@@ -40,6 +40,8 @@ const Posts = () => {
         setPostsPerPage={setPostsPerPage}
         totalPosts={totalPosts}
         totalPages={totalPages}
+        indexOfFirstPost={indexOfFirstPost}
+        indexOfLastPost={indexOfLastPost}
       />
     </>
   );

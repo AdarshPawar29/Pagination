@@ -11,8 +11,9 @@ $dropdownText: #717779;
 // MAIN CONTAINER
 .paginationContainer {
   display: flex;
-  justify-content: space-between;
+  justify-content: space-evenly;
   margin-top: 10px;
+  flex-wrap: wrap;
 }
 
 //VIEW
@@ -24,7 +25,6 @@ $dropdownText: #717779;
   font-size: 12px;
   line-height: 30px;
   margin: 10px 5px;
-
   .button__view--dropdown {
     background-color: $buttonPrimary;
     width: auto;
@@ -65,7 +65,7 @@ $dropdownText: #717779;
   }
 
   .input__pageSelect {
-    width: 30px;
+    width: 40px;
     border-radius: 5px;
     border: 1px solid black;
 

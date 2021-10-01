@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect } from "react";
 import "./style/Paginate_style.css";
 
 const Paginate = ({
@@ -8,6 +8,8 @@ const Paginate = ({
   setPostsPerPage,
   totalPosts,
   totalPages,
+  indexOfFirstPost,
+  indexOfLastPost,
 }) => {
   const handlePostsPerPage = (e) => {
     setPostsPerPage(e.target.value);
@@ -15,7 +17,15 @@ const Paginate = ({
 
   const handlePageSelect = (e) => {
     if (e.key === "Enter") {
-      setCurrentPageNo(e.target.value);
+      if (e.target.value > totalPages) {
+        setCurrentPageNo(totalPages);
+        console.log(currentPageNo);
+      } else if (e.target.value < 1) {
+        setCurrentPageNo(1);
+      } else {
+        setCurrentPageNo(e.target.value);
+      }
+      e.target.value = "";
     }
   };
 
@@ -34,7 +44,7 @@ const Paginate = ({
               aria-expanded="false"
             >
               <span className="span__buttonText">
-                {postsPerPage} <i class="fas fa-chevron-down"></i>
+                {postsPerPage} <i className="fas fa-chevron-down"></i>
               </span>
             </button>
 
@@ -74,14 +84,14 @@ const Paginate = ({
         {/* STATUS */}
         <div className="status">
           <span className="span__ViewingText">
-            Viewing {currentPageNo} - {postsPerPage} of {totalPosts}
+            Viewing {indexOfFirstPost + 1} - {indexOfLastPost} of {totalPosts}
           </span>
         </div>
 
         {/* PAGE SELECT */}
         <div className="pageSelect">
           <input
-            type="text"
+            type="number"
             onKeyDown={handlePageSelect}
             placeholder={currentPageNo}
             className="input__pageSelect"
@@ -89,15 +99,21 @@ const Paginate = ({
           <span className="span__pageSelectText">of {totalPages}</span>
           <button
             className="button__pageSelect--left"
-            onClick={() => setCurrentPageNo(currentPageNo - 1)}
+            onClick={() => {
+              setCurrentPageNo(currentPageNo - 1);
+            }}
+            disabled={currentPageNo <= 1 ? true : false}
           >
-            <i class="fas fa-chevron-left"></i>
+            <i className="fas fa-chevron-left"></i>
           </button>
           <button
             className="button__pageSelect--right"
-            onClick={() => setCurrentPageNo(currentPageNo + 1)}
+            onClick={() => {
+              setCurrentPageNo(currentPageNo + 1);
+            }}
+            disabled={currentPageNo >= totalPages ? true : false}
           >
-            <i class="fas fa-chevron-right"></i>
+            <i className="fas fa-chevron-right"></i>
           </button>
         </div>
       </div>
