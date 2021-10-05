@@ -70,6 +70,7 @@
   width: 40px;
   border-radius: 5px;
   border: 1px solid black;
+  display: inline-block;
 }
 
 .pageSelect .input__pageSelect::-webkit-input-placeholder {

@@ -1,5 +1,6 @@
-import React, { useEffect } from "react";
+import React from "react";
 import "./style/Paginate_style.css";
+import { SpsButton, SpsTextInput, SpsDropdown } from "@spscommerce/ds-react";
 
 const Paginate = ({
   currentPageNo,
@@ -11,24 +12,22 @@ const Paginate = ({
   indexOfFirstPost,
   indexOfLastPost,
 }) => {
-  const handlePostsPerPage = (e) => {
-    setPostsPerPage(e.target.value);
-  };
-
   const handlePageSelect = (e) => {
-    if (e.key === "Enter") {
-      if (e.target.value > totalPages) {
+    if (e.target.value.match(/[~`!@#$%^&*()\-_+=\\|{}\\["':;<>?/</>,.]/)) {
+      setCurrentPageNo(1);
+    } else {
+      let parsed = parseInt(e.target.value);
+
+      if (parsed > totalPages) {
         setCurrentPageNo(totalPages);
         console.log(currentPageNo);
-      } else if (e.target.value < 1) {
+      } else if (parsed < 1) {
         setCurrentPageNo(1);
       } else {
-        setCurrentPageNo(e.target.valueAsNumber);
-
-        //BUG FIXED HERE
-        // e.target.value ---> e.target.valueAsNumber (String to Number)
+        setCurrentPageNo(parsed);
       }
     }
+
     e.target.value = "";
   };
 
@@ -38,49 +37,34 @@ const Paginate = ({
         {/* VIEW */}
         <div className="view">
           <span className="span __viewText span__viewText--1">View</span>
-          <div className="dropdown dropdown__inline">
-            <button
-              className="button__view--dropdown"
-              type="button"
-              id="dropdownMenuButton1"
-              data-bs-toggle="dropdown"
-              aria-expanded="false"
-            >
-              <span className="span__buttonText">
-                {postsPerPage} <i className="fas fa-chevron-down"></i>
-              </span>
-            </button>
 
-            <ul className="dropdown-menu" aria-labelledby="dropdownMenuButton1">
-              <li>
-                <button
-                  className="dropdown-item"
-                  value={25}
-                  onClick={(e) => handlePostsPerPage(e)}
-                >
-                  25
-                </button>
-              </li>
-              <li>
-                <button
-                  className="dropdown-item"
-                  value={50}
-                  onClick={(e) => handlePostsPerPage(e)}
-                >
-                  50
-                </button>
-              </li>
-              <li>
-                <button
-                  className="dropdown-item"
-                  value={100}
-                  onClick={(e) => handlePostsPerPage(e)}
-                >
-                  100
-                </button>
-              </li>
-            </ul>
-          </div>
+          <SpsDropdown
+            id="regular"
+            label={postsPerPage}
+            options={[
+              [
+                { label: "25" },
+                () => {
+                  setPostsPerPage(25);
+                  setCurrentPageNo(1);
+                },
+              ],
+              [
+                { label: "50" },
+                () => {
+                  setPostsPerPage(50);
+                  setCurrentPageNo(1);
+                },
+              ],
+              [
+                { label: "100" },
+                () => {
+                  setPostsPerPage(100);
+                  setCurrentPageNo(1);
+                },
+              ],
+            ]}
+          />
           <span className="span viewText span__viewText--2">Per Page</span>
         </div>
 
@@ -93,31 +77,32 @@ const Paginate = ({
 
         {/* PAGE SELECT */}
         <div className="pageSelect">
-          <input
-            type="number"
-            onKeyDown={handlePageSelect}
+          <SpsTextInput
+            type="text"
             placeholder={currentPageNo}
+            onChange={(e) => handlePageSelect(e)}
             className="input__pageSelect"
           />
           <span className="span__pageSelectText">of {totalPages}</span>
-          <button
-            className="button__pageSelect--left"
+          <SpsButton
+            className="ml-1 mb-1"
             onClick={() => {
               setCurrentPageNo(currentPageNo - 1);
             }}
             disabled={currentPageNo <= 1 ? true : false}
           >
             <i className="fas fa-chevron-left"></i>
-          </button>
-          <button
-            className="button__pageSelect--right"
+          </SpsButton>
+
+          <SpsButton
+            className="ml-1 mb-1"
             onClick={() => {
               setCurrentPageNo(currentPageNo + 1);
             }}
             disabled={currentPageNo >= totalPages ? true : false}
           >
             <i className="fas fa-chevron-right"></i>
-          </button>
+          </SpsButton>
         </div>
       </div>
     </>
